@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Required meta tags-->
+  <meta charset="utf-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- Color theme for statusbar (Android only) -->
+  <meta name="theme-color" content="#2196f3">
+  <!-- Your app title -->
+  <title>Editor de Ordem Serviço</title>
+  <!-- Path to Framework7 Library Bundle CSS -->
+  <link rel="stylesheet" href="css/framework7-bundle.css">
+  <!-- Path to your custom app styles-->
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="path/to/framework7-icons.css">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body>
+  <!-- App root element -->
+  <div id="app">
+
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+      <!-- Initial Page, "data-name" contains page name -->
+      <div data-name="viaconnect" class="page">
+
+        <!-- Top Navbar 
+          <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner">
+              <div class="title">Editar texto</div>
+            </div>
+          </div>-->
+        <div class="navbar">
+          <div class="navbar-bg"></div>
+          <div class="navbar-inner">
+            <div class="left">
+              <a href="#" class="link back">
+                <i class="icon icon-back"></i>
+                <span>Voltar</span>
+              </a>
+            </div>
+            <div class="title">Editar texto</div>
+            <div class="right">
+              <a href="#" class="link">
+                <i class="icon another-icon"></i>
+                <span>Menu</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!--Fab Botton-->
+        <div class="fab fab-extended fab-center-bottom color-black ">
+          <a id="btnGeraros">
+            <i class="icon f7-icons if-not-md"></i>
+            <i class="icon material-icons md-only"></i>
+            <div class="fab-text">Emitir OS</div>
+          </a>
+        </div>
+
+        <!-- Scrollable page content -->
+        <div class="page-content ">
+          <div class="block-title">Clique Para editar</div>
+          <div class="editar">
+            Nome Cliente: <br />
+            <input type="text" id="nomecliente" placeholder="Digite o nome completo"> <br />
+            E-mail: <br />
+            <input type="text" id="email" placeholder="exemplo@provedor.com"> <br />
+            Telefone: <br />
+            <input type="text" id="telefone"> <br />
+            CPF/CNPJ: <br />
+            <input type="text" id="cpf_cnpj" placeholder="Apenas numero"> <br />
+            RG: <br />
+            <input type="text" id="identidade"> <br />
+            Endereço: <br />
+            <input type="text" id="endereco" placeholder="Estado, cidade, Bairro, Rua e numero"> <br /> <br />
+            Dados do aparelo: <br />
+            <input type="text" id="dado_aparelho"> <br />
+            Defito apresentado pelo cliente: <br />
+            <input type="text" id="defeito"> <br />
+            Análise técnica: <br />
+            <input type="text" id="analise_tecnica"> <br />
+            Valor total: <br />
+            <input type="number" step="0.01" id="total"> <br />
+
+
+            <!--<div class="block block-strong inset">
+                    <p class="grid grid-cols-2 grid-gap">
+                      <a class="button button-fill" @click=${openDemo1}>One group</a>
+                      
+                    </p>
+                    <button onclick="gerarOrdemserve()">Gerar Ordem de Serviço</button>
+                <button class="btn" >osS</button>
+                 <button id="btn_imp" >osS</button>
+                    <p class="grid grid-cols-3 grid-gap">
+                       
+                        <button class="button button-fill color-green">gerar os</button>
+                       
+                      </p>
+                      <button onclick="gerarOrdemserve()">Gerar Ordem de Serviço</button>
+                <button class="button button-fill color-red">Red</button>  <button class="button button-fill color-blue">Blue</button>
+            <button class="btn">osS</button>-->
+            <br> <br> <br> <br>
+          </div>
+          <div id="vaip" class="print">
+            <h1>Ordem de Serviço - Via Estabelecimento</h1>
+            <header>
+              <img style="max-height: 90px; margin-left: 250px;" src="img/connect teck.png" alt="Logo da Empresa">
+            </header>
+            <h2>Connect Teck OS N° <span>01</span></h2>
+            <p> Nº Orcamento: 0001</p><br>
+            <p class="subtitle">Dados do Cliente</p><br>
+            <p>Nome Cliente: <span id="ordem_nomecliente"></span></p>
+            <p> E-mail: <span id="ordem_email"></span></p>
+            <p>Telefone: <span id="ordem_telefone"></span></p>
+            <p> CPF/CNPJ: <span id="ordem_cpf_cnpj"></span></p>
+            <p>RG: <span id="ordem_identidade"></span></p>
+            <p>Endereço: <span id="ordem_endereco"></span></p><br>
+            <p class="subtitle">Dados do equipamento</p><br>
+            <p>Tipo do equipamento: ex:Celular <br> Modelo do equipamento: <span id="ordem_dado_aparelho"></span></p>
+            <br>
+            <p class="subtitle">Dados Orcamento</p><br>
+            <p>Nome do Tecnico: Tiago</p>
+            <p>Defito apresentado pelo cliente: <span id="ordem_defeito"></span></p>
+            <p> Análise técnica: <span id="ordem_analise_tecnica"></span></p>
+            <p>Data: <span id="ordem_data"></span></p>
+            <p>Valor total: R$<span id="ordem_total">0,00</span></p>
+            <p> Condições gerais <br> <br>
+              *A ConnectTeck irá repassar aos clientes após análise técnica do(s) aparelho(s), um laudo informando
+              eventuais
+              avarias não detectadas pelo solicitante e as causas que estão acarretando o problema apresentado,ou
+              problemas
+              detectados na Ordem de Serviço respectivamente assinado/ autorizado demonstrando assim ciência por parte
+              do
+              cliente em todo nosso processo.
+              *Nos Eximimos de qualquer responsabilidade e garantia de aparelhos que apresentem sinais de oxidações
+              ocasionados
+              pelo contato com líquidos como água,suor,maresia, chuva, ácidos, limalha de ferro, etc.Tendo em vista que
+              aparelhos
+              eletro-eletrônicos expostos a estas condições sofrem alterações de suas configurações e dopagens de
+              componentes.
+              *Damos garantia de 30 dias em peças e 90 dias em manutenções eletrônicas desde que os mesmos não
+              apresentem mal
+              uso, peças expostas, arranhadas, trincadas, quebradas ou oxidadas. Mantendo sempre o selo de garantia sem
+              violação.
+              Li e concordo com os termos da ConnectTeck:,<!--<input type="checkbox" id="comfimaos" />-->
+            </p>
+          </div>
+          <button onclick="printPage()">Imprimir</button>
+        </div>
+        <!-- Link to another page -->
+        <a href="/about/"></a>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- Path to Framework7 Library Bundle JS-->
+  <script type="text/javascript" src="js/lib/framework7-bundle.js"></script>
+  <!--Typed js-->
+  <script type="text/javascript" src="js/lib/typed.js"></script>
+  <!--jQUERY 3.7.1-->
+  <script type="text/javascript" src="js/lib/jquery-3.7.1.js"></script>
+  <!-- Path to your app js-->
+  <script type="text/javascript" src="js/router.js"></script>
+  <!--CORDOVA PLUGIN-->
+  <script type="text/javascript" src="cordova.js"></script>
+  <!--Printa ordem-->
+  <script type="text/javascript" src="js/imprimir.js"></script>
+
+  <script>
+   /* const btnEl = document.querySelector('.btn');
+
+    function gerarpdf() {
+      document.getElementById('ordem_nomecliente').innerHTML = document.getElementById('nomecliente').value;
+      document.getElementById('ordem_email').innerHTML = document.getElementById('email').value;
+      document.getElementById('ordem_telefone').innerHTML = document.getElementById('telefone').value;
+      document.getElementById('ordem_cpf_cnpj').innerHTML = document.getElementById('cpf_cnpj').value;
+      document.getElementById('ordem_identidade').innerHTML = document.getElementById('identidade').value;
+      document.getElementById('ordem_endereco').innerHTML = document.getElementById('endereco').value;
+      document.getElementById('ordem_dado_aparelho').innerHTML = document.getElementById('dado_aparelho').value;
+      document.getElementById('ordem_defeito').innerHTML = document.getElementById('defeito').value;
+      document.getElementById('ordem_analise_tecnica').innerHTML = document.getElementById('analise_tecnica').value;
+      document.getElementById('ordem_total').innerHTML = parseFloat(document.getElementById('total').value).toLocaleString('pt-br', { minimumFractionDigits: 2 });
+      document.getElementById('ordem_data').innerHTML = dataAtual();
+      window.print();
+
+      // var checkboxEl = document.querySelector('#comfimaos');
+      //checkboxEl.indeterminate = true;
+    }
+    function dataAtual() {
+      let data = new Date();
+      return data.getDate() + "/" + (data.getMonth() + 1) + "/" + data.getFullYear();
+    }
+    console.log('Função gerarOrdemserve foi chamada!');
+
+
+    btnEl.addEventListener('click', gerarpdf);*/
+  </script>
+</body>
+
+</html>
